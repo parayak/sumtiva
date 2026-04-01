@@ -1,0 +1,89 @@
+/* RESET */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+    color: #fff;
+}
+
+/* HERO */
+.hero {
+    height: 60vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+/* CARDS */
+.poem-card {
+    background: #2c2c3e;
+    border-radius: 16px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* SOMBRA Y EFECTO FLOTANTE */
+.poem-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* BORDE LED */
+.poem-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet);
+    background-size: 300% 300%;
+    -webkit-mask: 
+        linear-gradient(#000 0 0) content-box, 
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* ACTIVAR LED */
+.poem-card:hover::before {
+    opacity: 1;
+    animation: ledFlow 3s linear infinite;
+}
+
+/* ANIMACIÓN LED */
+@keyframes ledFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* TEXTOS */
+.poem-card h5 {
+    font-weight: 500;
+}
+
+.author {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.excerpt {
+    font-size: 0.95rem;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
